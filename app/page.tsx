@@ -195,53 +195,53 @@ export default function Home() {
     return matrix;
   }
 
-  function invertMatrix(extendedMatrix: { name: string; value: number }[][]) {
-    const n = extendedMatrix.length;
+  // function invertMatrix(extendedMatrix: { name: string; value: number }[][]) {
+  //   const n = extendedMatrix.length;
 
-    // Применяем метод Гаусса
-    for (let step = 0; step < n; step++) {
-      // Выбор ведущего элемента
-      let maxRow = step;
-      for (let i = step + 1; i < n; i++) {
-        if (
-          Math.abs(extendedMatrix[i][step].value) >
-          Math.abs(extendedMatrix[maxRow][step].value)
-        ) {
-          maxRow = i;
-        }
-      }
+  //   // Применяем метод Гаусса
+  //   for (let step = 0; step < n; step++) {
+  //     // Выбор ведущего элемента
+  //     let maxRow = step;
+  //     for (let i = step + 1; i < n; i++) {
+  //       if (
+  //         Math.abs(extendedMatrix[i][step].value) >
+  //         Math.abs(extendedMatrix[maxRow][step].value)
+  //       ) {
+  //         maxRow = i;
+  //       }
+  //     }
 
-      // Перестановка строк
-      if (maxRow !== step) {
-        [extendedMatrix[step], extendedMatrix[maxRow]] = [
-          extendedMatrix[maxRow],
-          extendedMatrix[step],
-        ];
-      }
+  //     // Перестановка строк
+  //     if (maxRow !== step) {
+  //       [extendedMatrix[step], extendedMatrix[maxRow]] = [
+  //         extendedMatrix[maxRow],
+  //         extendedMatrix[step],
+  //       ];
+  //     }
 
-      // Нормализация ведущей строки
-      const pivot = extendedMatrix[step][step].value;
+  //     // Нормализация ведущей строки
+  //     const pivot = extendedMatrix[step][step].value;
 
-      for (let j = 0; j < extendedMatrix[step].length; j++) {
-        extendedMatrix[step][j].value /= pivot;
-      }
+  //     for (let j = 0; j < extendedMatrix[step].length; j++) {
+  //       extendedMatrix[step][j].value /= pivot;
+  //     }
 
-      // Обнуление остальных строк
-      for (let i = 0; i < n; i++) {
-        if (i !== step) {
-          const factor = extendedMatrix[i][step].value;
-          for (let j = 0; j < extendedMatrix[i].length; j++) {
-            extendedMatrix[i][j].value -=
-              factor * extendedMatrix[step][j].value;
-          }
-        }
-      }
-    }
+  //     // Обнуление остальных строк
+  //     for (let i = 0; i < n; i++) {
+  //       if (i !== step) {
+  //         const factor = extendedMatrix[i][step].value;
+  //         for (let j = 0; j < extendedMatrix[i].length; j++) {
+  //           extendedMatrix[i][j].value -=
+  //             factor * extendedMatrix[step][j].value;
+  //         }
+  //       }
+  //     }
+  //   }
 
-    const inverseMatrix = extendedMatrix.map((row) => row.slice(n));
-    setReverseMatrix(inverseMatrix);
-    return inverseMatrix;
-  }
+  //   const inverseMatrix = extendedMatrix.map((row) => row.slice(n));
+  //   setReverseMatrix(inverseMatrix);
+  //   return inverseMatrix;
+  // }
   function onSraightMove() {
     const n = straightMoveA.length;
     const extendedMatrix = A.map((row, i) => [
