@@ -102,6 +102,8 @@ export default function Home() {
   });
 
   const [firstElementRows, setFirstElementRows] = useState<number[]>([]);
+  console.log("FirstElementRows: ", firstElementRows);
+
   const [straightMoveDeterminantMatrix, setStraightMoveDeterminantMatrix] =
     useState<{ name: string; value: number }[][]>([]);
   const [determinantMatrix, setDeterminantMatrix] = useState(0);
@@ -259,6 +261,7 @@ export default function Home() {
     for (let i = 0; i < n; i++) {
       const res = findMaxInMatrix(i, straightMoveA, straightMoveB);
       const firstElement = res.matrix[i][i].value;
+      // console.log("firstElement: ", firstElement);
       setFirstElementRows((prevRows) => [...prevRows, firstElement]);
       calcStraightMove(i, res.matrix, res.vector);
     }
@@ -364,9 +367,11 @@ export default function Home() {
 
           if (rowIndex === itemIndex) {
             newItem.value =
-              rowIndex === 3
-                ? firstElementRows[rowIndex]
-                : -firstElementRows[rowIndex];
+              rowIndex === 2
+                ? -firstElementRows[rowIndex]
+                : firstElementRows[rowIndex];
+
+            // firstElementRows[rowIndex];
           }
           return newItem;
         })
