@@ -39,12 +39,12 @@ const A = [
   ],
 ];
 
-const b = [
-  { name: "b", value: 0.654 },
-  { name: "b", value: -24.016 },
-  { name: "b", value: 54.567 },
-  { name: "b", value: -64.78 },
-];
+// const b = [
+//   { name: "b", value: 0.654 },
+//   { name: "b", value: -24.016 },
+//   { name: "b", value: 54.567 },
+//   { name: "b", value: -64.78 },
+// ];
 
 export default function Home() {
   const [straightMoveA, setStraightMoveA] = useState<
