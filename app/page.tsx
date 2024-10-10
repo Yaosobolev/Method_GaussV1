@@ -363,7 +363,10 @@ export default function Home() {
           const newItem = { ...item };
 
           if (rowIndex === itemIndex) {
-            newItem.value = firstElementRows[rowIndex];
+            newItem.value =
+              rowIndex === 3
+                ? firstElementRows[rowIndex]
+                : -firstElementRows[rowIndex];
           }
           return newItem;
         })
@@ -376,7 +379,7 @@ export default function Home() {
       1
     );
 
-    setDeterminantMatrix(calcDeterminantMatrix);
+    setDeterminantMatrix(-calcDeterminantMatrix);
   }
 
   async function onCalculate() {
