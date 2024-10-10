@@ -297,20 +297,53 @@ export default function Home() {
   }
 
   function evaluateError() {
-    const disturbedRightSide = A.map((row) => {
+    const Aer = [
+      [
+        { name: "x1", value: 8 },
+        { name: "x2", value: 11 },
+        { name: "x3", value: -1 },
+        { name: "x4", value: -0.07 },
+      ],
+      [
+        { name: "x1", value: 4.056 },
+        { name: "x2", value: 0.3 },
+        { name: "x3", value: -5.3 },
+        { name: "x4", value: 0.11 },
+      ],
+      [
+        { name: "x1", value: 0.2 },
+        { name: "x2", value: 5.77 },
+        { name: "x3", value: 2.8 },
+        { name: "x4", value: -15 },
+      ],
+      [
+        { name: "x1", value: 12 },
+        { name: "x2", value: -3.8 },
+        { name: "x3", value: 1 },
+        { name: "x4", value: 3 },
+      ],
+    ];
+
+    const ber = [
+      { name: "b", value: 0.654 },
+      { name: "b", value: -24.016 },
+      { name: "b", value: 54.567 },
+      { name: "b", value: -64.78 },
+    ];
+    const disturbedRightSide = Aer.map((row) => {
       return row.reduce(
         (acc, val, j) => acc + Number(val.value) * reverseMoveArray[j]?.value,
         0
       );
     });
 
-    const vectorB = b.map((val, j) => val.value - disturbedRightSide[j]);
+    const vectorB = ber.map((val, j) => val.value - disturbedRightSide[j]);
 
     const euclideanNormOfVectorB = Math.sqrt(
       vectorB.reduce((acc, val) => acc + val ** 2, 0)
     );
     const euclideanNormOfB = Math.sqrt(
-      b.reduce((acc, val) => acc + val.value ** 2, 0)
+      ber.reduce((acc, val) => acc + val.value ** 2, 0)
     );
 
     const fault = euclideanNormOfVectorB / euclideanNormOfB;
